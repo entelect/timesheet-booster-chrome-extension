@@ -17,12 +17,13 @@ Do not use: frameworks (React, Vue, etc.), npm packages or bundlers, TypeScript,
 
 ## Architecture
 
-- `manifest.json`: declares every script. The CSS and `theme.js` load at `document_start` so styles and dark mode apply before first paint. The rest load at `document_idle` in two `content_scripts` entries: isolated world, then MAIN world (`"world": "MAIN"`). Order within an entry matters.
+- `manifest.json`: declares every script. The CSS and `theme.js` load at `document_start` so styles and dark mode apply before first paint. The rest load at `document_idle` in two `content_scripts` entries: isolated world, then MAIN world (`"world": "MAIN"`). Order within an entry matters. The sign-off page (`/TimesheetSignOff/*`) also matches `Timesheet*`, so it is excluded from those two entries and has its own pair.
 - `background.js`: service worker for the daily reminder only (`chrome.alarms` and `chrome.notifications`), since it has to reach tabs other than timesheets. It can't see the page, so `stats-render.js` saves today's hours for it to read. Keep everything else in content scripts.
 - `constants.js`: selectors and storage keys.
 - `content-scripts/setup.js`: shared state and the `onDataLoaded` / `on*Changed` hook arrays. `main.js` loads stored data and fires the hooks, so it stays last.
 - `content-scripts/*-render.js`: isolated-world features. New features go in a new or existing render script, registered in the isolated world entry of `manifest.json` before `main.js`.
 - `content-scripts/*-bridge.js`: MAIN world scripts that drive timesheets' widgets and endpoints. The isolated world talks to them with `tb:*` CustomEvents carrying JSON strings, and they tag the DOM with `data-tb-*` attributes.
+- `content-scripts/signoff-bridge.js`, `signoff-render.js`: the sign-off page. The bridge reads each employee's widget and publishes summaries with `tb:signoff-updated`. It never ticks or submits anything.
 - `content-scripts/redesign.css`, `violations.css`: all styling, including dark mode under `html.tb-dark`.
 - `docs/`: README screenshots and plans (for example `docs/firefox-port.md`).
 

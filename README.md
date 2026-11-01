@@ -46,6 +46,10 @@ On the entry form, drag the time field right or up to add 15 minutes, and left o
 
 Tick **Save as template** when adding an entry to save it. Templates are applied from the Templates card next to the entry form, and renamed or deleted from **Manage Templates** in the header.
 
+### Sign-off summaries
+
+On the Timesheet Sign Off page, the top bar shows how many people still need signing off, with a button to expand or collapse everyone. Each person's table starts collapsed under a card showing their hours, billable percentage, days captured and missing, average time taken to log an entry, and flags. Expanding it shows hours by project and category, and flagged items such as descriptions repeated more than 3 times outside meetings. Nothing is ticked or submitted for you.
+
 ### Daily reminder
 
 Turned on under **Settings** in the header, a notification reminds you to capture timesheets for the day. It is off by default. 

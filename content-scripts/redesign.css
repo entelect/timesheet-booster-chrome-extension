@@ -1999,6 +1999,208 @@ html .tb-swatches-project[aria-pressed="true"]::after {
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
+/* Sign-off page: one collapsible card per employee, above their table */
+html .tb-signoff-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    /* right margin clears the page's absolutely positioned colour legend */
+    margin: 12px 205px 16px 0;
+    padding: 12px 16px;
+    color: var(--tb-ink);
+    background: var(--tb-panel);
+    border: 1px solid var(--tb-card-border);
+    border-radius: var(--tb-radius);
+}
+
+html .tb-signoff-count {
+    font-size: 15px;
+}
+
+html .tb-signoff-count strong {
+    font-size: 20px;
+    color: var(--tb-blue-text);
+}
+
+html .tb-signoff-toggle-all {
+    padding: 6px 14px;
+    font-weight: 600;
+    color: var(--tb-on-accent);
+    background: var(--tb-blue);
+    border: 0;
+    border-radius: 6px;
+}
+
+html .tb-signoff-toggle-all:hover {
+    background: var(--tb-blue-dark);
+}
+
+html .tb-signoff-card {
+    margin: 8px 0;
+    color: var(--tb-ink);
+    background: var(--tb-surface);
+    border: 1px solid var(--tb-card-border);
+    border-radius: var(--tb-radius);
+}
+
+html .tb-signoff-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    width: 100%;
+    padding: 10px 14px;
+    color: inherit;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-radius: var(--tb-radius);
+}
+
+html .tb-signoff-toggle:hover {
+    background: var(--tb-hover);
+}
+
+html .tb-signoff-chevron {
+    width: 8px;
+    height: 8px;
+    flex: none;
+    border-right: 2px solid var(--tb-muted);
+    border-bottom: 2px solid var(--tb-muted);
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+}
+
+html .tb-signoff-collapsed .tb-signoff-chevron {
+    transform: rotate(-45deg);
+}
+
+html .tb-signoff-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+html .tb-signoff-status {
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+html .tb-signoff-status-todo {
+    color: var(--tb-blue-text);
+    background: color-mix(in srgb, var(--tb-blue) 14%, var(--tb-mix-base));
+}
+
+html .tb-signoff-status-done {
+    color: var(--tb-green-ink);
+    background: var(--tb-green-soft);
+}
+
+html .tb-signoff-status-muted {
+    color: var(--tb-muted);
+    background: var(--tb-subtle);
+}
+
+html .tb-signoff-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    margin-left: auto;
+}
+
+html .tb-signoff-stat-label {
+    margin-right: 6px;
+    font-size: 12px;
+    color: var(--tb-muted);
+}
+
+html .tb-signoff-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 4px 16px 14px 34px;
+}
+
+html .tb-signoff-collapsed .tb-signoff-details,
+html .tb-signoff-collapsed .contents,
+html [data-tb-signoff-id] .signoff-infoHeader {
+    display: none !important;
+}
+
+html .tb-signoff-section h4 {
+    margin: 8px 0 4px;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--tb-muted);
+}
+
+html .tb-signoff-section ul {
+    margin: 0;
+    list-style: none;
+}
+
+html .tb-signoff-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    line-height: 22px;
+}
+
+html .tb-signoff-category {
+    padding-left: 14px;
+    font-size: 12px;
+    color: var(--tb-muted);
+}
+
+html .tb-signoff-clear {
+    margin: 0;
+    color: var(--tb-green-text);
+}
+
+html.tb-dark .signoff-team-name,
+html.tb-dark .signoff-submit {
+    color: var(--tb-ink) !important;
+    background: none !important;
+}
+
+html.tb-dark .signoff-table th {
+    color: var(--tb-ink) !important;
+    background: var(--tb-panel) !important;
+}
+
+html.tb-dark .signoff-table,
+html.tb-dark .signoff-table th,
+html.tb-dark .signoff-table td {
+    border-color: var(--tb-line) !important;
+}
+
+/* the status colours from the page's legend have to survive on these cells */
+html.tb-dark .signoff-table td:not(.date, .emptyDate, .errorCell, .rowChanged, .rowDeleted, .rowNew) {
+    color: var(--tb-ink) !important;
+    background: var(--tb-surface) !important;
+}
+
+html.tb-dark .signoff-table tr.oddDay td:not(.date, .emptyDate, .errorCell, .rowChanged, .rowDeleted, .rowNew) {
+    background: var(--tb-subtle) !important;
+}
+
+html.tb-dark .signoff-table :is(select, textarea, input:not([type="checkbox"])) {
+    color: var(--tb-ink) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+html.tb-dark .signoff-table select option {
+    color: var(--tb-ink);
+    background: var(--tb-raised);
+}
+
+html.tb-dark .signoff-table :is(.icon-trash, .icon-ban-circle, .icon-lock) {
+    filter: invert(1);
+}
+
 /* html.tb-dark is toggled from the header and persisted by theme.js */
 
 /*

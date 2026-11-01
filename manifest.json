@@ -37,6 +37,9 @@
             "matches": [
                 "https://employee.entelect.co.za/Timesheet*"
             ],
+            "exclude_matches": [
+                "https://employee.entelect.co.za/TimesheetSignOff/*"
+            ],
             "js": [
                 "content-scripts/setup.js",
                 "content-scripts/icons.js",
@@ -56,10 +59,32 @@
             "matches": [
                 "https://employee.entelect.co.za/Timesheet*"
             ],
+            "exclude_matches": [
+                "https://employee.entelect.co.za/TimesheetSignOff/*"
+            ],
             "js": [
                 "content-scripts/entry-metadata-bridge.js",
                 "content-scripts/category-overflow-bridge.js",
                 "content-scripts/day-actions-bridge.js"
+            ],
+            "run_at": "document_idle",
+            "world": "MAIN"
+        },
+        {
+            "matches": [
+                "https://employee.entelect.co.za/TimesheetSignOff/*"
+            ],
+            "js": [
+                "content-scripts/signoff-render.js"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://employee.entelect.co.za/TimesheetSignOff/*"
+            ],
+            "js": [
+                "content-scripts/signoff-bridge.js"
             ],
             "run_at": "document_idle",
             "world": "MAIN"
