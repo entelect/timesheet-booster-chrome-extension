@@ -62,13 +62,12 @@ Ensure system allows browser notifications: on macOS, allow it under System Sett
 
 ## Installing on Chromium browsers
 
-The extension isn't on the Chrome Web Store, so it is installed from source. This works in Chrome, Edge, Brave, Arc, Opera and Vivaldi.
+The extension isn't on the Chrome Web Store, so it is installed as an unpacked extension. This works in Chrome, Edge, Brave, Arc, Opera and Vivaldi.
 
-1. Get the code, either by cloning the repository:
+1. Download `timesheet-booster-vX.Y.Z.zip` from the [latest release](https://github.com/entelect/timesheet-booster-chrome-extension/releases/latest) and unzip it somewhere permanent. If you'd rather run from source, clone the repository instead:
    ```sh
-   git clone https://github.com/DuartBreedt/timesheet-booster-chrome-extension.git
+   git clone https://github.com/entelect/timesheet-booster-chrome-extension.git
    ```
-   or by downloading it as a ZIP from GitHub (**Code > Download ZIP**) and unzipping it somewhere permanent.
 2. Open your browser's extensions page:
 
    | Browser | Address |
@@ -80,10 +79,10 @@ The extension isn't on the Chrome Web Store, so it is installed from source. Thi
    | Vivaldi | `vivaldi://extensions` |
 
 3. Turn on **Developer mode** (a toggle in the top right, or in the left sidebar on Edge).
-4. Click **Load unpacked** and select the project folder (the one containing `manifest.json`).
+4. Click **Load unpacked** and select the folder containing `manifest.json` (`timesheet-booster` if you unzipped a release).
 5. Open [timesheets](https://employee.entelect.co.za/Timesheet).
 
-**Updating:** pull the latest changes (or download the ZIP again into the same folder), then click the reload icon on the Timesheet Booster card in your extensions page and refresh timesheets.
+**Updating:** unzip the newest release over the same folder (or pull the latest changes if you cloned), then click the reload icon on the Timesheet Booster card in your extensions page and refresh timesheets.
 
 > Don't delete or move the folder after installing. The browser loads the extension from it every time.
 
@@ -120,4 +119,4 @@ Most features run in the extension's isolated world. Anything that needs timeshe
 2. Commit your changes with a clear message.
 3. Push to your fork and open a pull request against `main`, describing what changed and how you tested it.
 
-Bugs and feature requests go in [issues](https://github.com/DuartBreedt/timesheet-booster-chrome-extension/issues).
+Bugs and feature requests go in [issues](https://github.com/entelect/timesheet-booster-chrome-extension/issues).
